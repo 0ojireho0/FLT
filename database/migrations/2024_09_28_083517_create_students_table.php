@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('students', function (Blueprint $table) {
+            $table->id();
+            $table->string('email');
+            $table->string('password');
+            $table->set('active_status', ['Active', 'Inactive']);
+            $table->string('fullname');
+            $table->set('gender', ['Male', 'Female']);
+            $table->string('lrn');
+            $table->timestamp('birthday', precision: 0);
+            $table->string('house_number');
+            $table->string('barangay');
+            $table->string('city');
+            $table->string('province');
+            $table->string('religion');
+            $table->set('civil_status', ['May Asawa', 'Walang Asawa', 'Biyudo / Biyuda', 'Hiwalay sa asawa']);
+            $table->string('occupation');
+            $table->string('education');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('students');
+    }
+};
