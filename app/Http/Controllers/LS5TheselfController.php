@@ -46,4 +46,16 @@ class LS5TheselfController extends Controller
             $pdf = LS5Theself::all();
             return response()->json(['pdf'=>$pdf]);
     }
+    public function destroy(string $id)
+    {
+        //
+        $pdf = LS5Theself::findOrFail($id);
+
+
+        // Delete the student
+        $pdf->delete();
+     
+    
+        return response()->json(['message' => 'PDF deleted successfully'], 200);
+    }
 }

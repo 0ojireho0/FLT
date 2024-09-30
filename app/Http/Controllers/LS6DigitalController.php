@@ -46,4 +46,17 @@ class LS6DigitalController extends Controller
             $pdf = LS6Digital::all();
             return response()->json(['pdf'=>$pdf]);
     }
+
+    public function destroy(string $id)
+    {
+        //
+        $pdf = LS6Digital::findOrFail($id);
+
+
+        // Delete the student
+        $pdf->delete();
+     
+    
+        return response()->json(['message' => 'PDF deleted successfully'], 200);
+    }
 }

@@ -46,4 +46,17 @@ class LS5UtsController extends Controller
             $pdf = LS5Uts::all();
             return response()->json(['pdf'=>$pdf]);
     }
+
+    public function destroy(string $id)
+    {
+        //
+        $pdf = LS5Uts::findOrFail($id);
+
+
+        // Delete the student
+        $pdf->delete();
+     
+    
+        return response()->json(['message' => 'PDF deleted successfully'], 200);
+    }
 }

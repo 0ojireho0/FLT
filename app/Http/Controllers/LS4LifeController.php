@@ -46,4 +46,17 @@ class LS4LifeController extends Controller
             $pdf = LS4Life::all();
             return response()->json(['pdf'=>$pdf]);
     }
+
+    public function destroy(string $id)
+    {
+        //
+        $pdf = LS4Life::findOrFail($id);
+
+
+        // Delete the student
+        $pdf->delete();
+     
+    
+        return response()->json(['message' => 'PDF deleted successfully'], 200);
+    }
 }

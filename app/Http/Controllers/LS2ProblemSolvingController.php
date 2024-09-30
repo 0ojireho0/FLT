@@ -47,4 +47,17 @@ class LS2ProblemSolvingController extends Controller
             $pdf = LS2ProblemSolving::all();
             return response()->json(['pdf'=>$pdf]);
     }
+
+    public function destroy(string $id)
+    {
+        //
+        $pdf = LS2ProblemSolving::findOrFail($id);
+
+
+        // Delete the student
+        $pdf->delete();
+     
+    
+        return response()->json(['message' => 'PDF deleted successfully'], 200);
+    }
 }

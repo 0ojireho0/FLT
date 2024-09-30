@@ -46,4 +46,16 @@ class LS1EnglishController extends Controller
             $pdf = LS1English::all();
             return response()->json(['pdf'=>$pdf]);
     }
+    public function destroy(string $id)
+    {
+        //
+        $pdf = LS1English::findOrFail($id);
+
+
+        // Delete the student
+        $pdf->delete();
+     
+    
+        return response()->json(['message' => 'PDF deleted successfully'], 200);
+    }
 }

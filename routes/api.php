@@ -68,48 +68,61 @@ Route::delete('/ls1commskills/{id}', [LS1CommSkillsController::class, 'destroy']
 Route::post('/ls2problemsolving/upload', [LS2ProblemSolvingController::class, 'upload']);
 Route::get('/ls2problemsolving/{id}', [LS2ProblemSolvingController::class, 'show']);
 Route::get('/ls2problemsolving', [LS2ProblemSolvingController::class, 'index']);
+Route::delete('/ls2problemsolving/{id}', [LS2ProblemSolvingController::class, 'destroy']);
 
 Route::post('/ls5understanding/upload', [LS5UnderstandingController::class, 'upload']);
 Route::get('/ls5understanding/{id}', [LS5UnderstandingController::class, 'show']);
 Route::get('/ls5understanding', [LS5UnderstandingController::class, 'index']);
+Route::delete('/ls5understanding/{id}', [LS5UnderstandingController::class, 'destroy']);
 
 Route::post('/ls2scientific/upload', [LS2ScientificController::class, 'upload']);
 Route::get('/ls2scientific/{id}', [LS2ScientificController::class, 'show']);
 Route::get('/ls2scientific', [LS2ScientificController::class, 'index']);
+Route::delete('/ls2scientific/{id}', [LS2ScientificController::class, 'destroy']);
 
 Route::post('/ls3mathematical/upload', [LS3MathematicalController::class, 'upload']);
 Route::get('/ls3mathematical/{id}', [LS3MathematicalController::class, 'show']);
 Route::get('/ls3mathematical', [LS3MathematicalController::class, 'index']);
+Route::delete('/ls3mathematical/{id}', [LS3MathematicalController::class, 'destroy']);
 
 Route::post('/ls5theself/upload', [LS5TheselfController::class, 'upload']);
 Route::get('/ls5theself/{id}', [LS5TheselfController::class, 'show']);
 Route::get('/ls5theself', [LS5TheselfController::class, 'index']);
+Route::delete('/ls5theself/{id}', [LS5TheselfController::class, 'destroy']);
+
 
 Route::post('/ls1english/upload', [LS1EnglishController::class, 'upload']);
 Route::get('/ls1english/{id}', [LS1EnglishController::class, 'show']);
 Route::get('/ls1english', [LS1EnglishController::class, 'index']);
+Route::delete('/ls1english/{id}', [LS1EnglishController::class, 'destroy']);
 
 Route::post('/ls1filipino/upload', [LS1FilipinoController::class, 'upload']);
 Route::get('/ls1filipino/{id}', [LS1FilipinoController::class, 'show']);
 Route::get('/ls1filipino', [LS1FilipinoController::class, 'index']);
+Route::delete('/ls1filipino/{id}', [LS1FilipinoController::class, 'destroy']);
 
 Route::post('/ls2scientificliteracy/upload', [LS2ScientificLiteracyController::class, 'upload']);
 Route::get('/ls2scientificliteracy/{id}', [LS2ScientificLiteracyController::class, 'show']);
 Route::get('/ls2scientificliteracy', [LS2ScientificLiteracyController::class, 'index']);
+Route::delete('/ls2scientificliteracy/{id}', [LS2ScientificLiteracyController::class, 'destroy']);
 
 Route::post('/ls3mathematics/upload', [LS3MathematicsController::class, 'upload']);
 Route::get('/ls3mathematics/{id}', [LS3MathematicsController::class, 'show']);
 Route::get('/ls3mathematics', [LS3MathematicsController::class, 'index']);
+Route::delete('/ls3mathematics/{id}', [LS3MathematicsController::class, 'destroy']);
 
 Route::post('/ls4life/upload', [LS4LifeController::class, 'upload']);
 Route::get('/ls4life/{id}', [LS4LifeController::class, 'show']);
 Route::get('/ls4life', [LS4LifeController::class, 'index']);
+Route::delete('/ls4life/{id}', [LS4LifeController::class, 'destroy']);
 
 Route::post('/ls5uts/upload', [LS5UtsController::class, 'upload']);
 Route::get('/ls5uts/{id}', [LS5UtsController::class, 'show']);
 Route::get('/ls5uts', [LS5UtsController::class, 'index']);
+Route::delete('/ls5uts/{id}', [LS5UtsController::class, 'destroy']);
 
 Route::post('/ls6digital/upload', [LS6DigitalController::class, 'upload']);
 Route::get('/ls6digital/{id}', [LS6DigitalController::class, 'show']);
 Route::get('/ls6digital', [LS6DigitalController::class, 'index']);
+Route::delete('/ls6digital/{id}', [LS6DigitalController::class, 'destroy']);
 

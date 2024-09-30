@@ -46,4 +46,17 @@ class LS2ScientificLiteracyController extends Controller
             $pdf = LS2ScientificLiteracy::all();
             return response()->json(['pdf'=>$pdf]);
     }
+
+    public function destroy(string $id)
+    {
+        //
+        $pdf = LS2ScientificLiteracy::findOrFail($id);
+
+
+        // Delete the student
+        $pdf->delete();
+     
+    
+        return response()->json(['message' => 'PDF deleted successfully'], 200);
+    }
 }
