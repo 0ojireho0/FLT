@@ -47,5 +47,7 @@ class TeacherPreTestController extends Controller
         return response()->json($studentTeacher, 200);
     }
 
-    
+    public function submitScore(Request $request){
+        return $request;
+    }
 }

@@ -55,10 +55,15 @@ Route::post('/teacher-login', [TeacherController::class, 'login']);
 Route::get('/get-specific-students', [TeacherPreTestController::class, 'getSpecificStudents']);
 Route::get('/teacher-pretest', [TeacherPreTestController::class, 'index']);
 Route::post('/new-student-teacher', [TeacherPreTestController::class, 'store'] );
+Route::post('/submit-score', [TeacherPreTestController::class, 'submitScore']);
+
+
 
 Route::post('/ls1commskills/upload', [LS1CommSkillsController::class, 'upload']);
 Route::get('/ls1commskills/{id}', [LS1CommSkillsController::class, 'show']);
 Route::get('/ls1commskills', [LS1CommSkillsController::class, 'index']);
+Route::delete('/ls1commskills/{id}', [LS1CommSkillsController::class, 'destroy']);
+
 
 Route::post('/ls2problemsolving/upload', [LS2ProblemSolvingController::class, 'upload']);
 Route::get('/ls2problemsolving/{id}', [LS2ProblemSolvingController::class, 'show']);
