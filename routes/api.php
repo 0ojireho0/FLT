@@ -59,6 +59,7 @@ Route::post('/submit-score', [TeacherPreTestController::class, 'submitScore']);
 
 
 
+
 Route::post('/ls1commskills/upload', [LS1CommSkillsController::class, 'upload']);
 Route::get('/ls1commskills/{id}', [LS1CommSkillsController::class, 'show']);
 Route::get('/ls1commskills', [LS1CommSkillsController::class, 'index']);

@@ -25,7 +25,7 @@ class TeacherPreTestController extends Controller
         $results = DB::table('teacher_pre_tests as tp')
             ->join('students as s', 'tp.students_id', '=', 's.id')
             ->join('teachers as t', 'tp.teacher_id', '=', 't.id')
-            ->select('t.id as teacher_id', 's.*','tp.pis', 'tp.ls1_english','tp.ls1_filipino', 'tp.ls2', 'tp.ls3', 'tp.ls4', 'tp.ls5', 'tp.ls6' )  // Select all student data (s.*) and teacher_id
+            ->select('t.id as teacher_id', 's.*','tp.*')  // Select all student data (s.*) and teacher_id
             ->where('t.id', $teacherId)
             ->get();
     
