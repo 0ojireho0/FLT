@@ -42,6 +42,8 @@ Route::get('/student', [StudentController::class, 'index']);
 Route::put('/student/{id}', [StudentController::class, 'update']);
 Route::post('/student', [StudentController::class, 'store']);
 Route::delete('/student/{id}', [StudentController::class, 'destroy']);
+Route::post('/getStudentAnswer', [StudentController::class, 'getStudentsAnswers']);
+
 
 Route::post('/student-pis', [StudentPISController::class, 'store']);
 Route::get('/student-pis', [StudentPISController::class, 'index']);
@@ -56,6 +58,7 @@ Route::get('/get-specific-students', [TeacherPreTestController::class, 'getSpeci
 Route::get('/teacher-pretest', [TeacherPreTestController::class, 'index']);
 Route::post('/new-student-teacher', [TeacherPreTestController::class, 'store'] );
 Route::post('/submit-score', [TeacherPreTestController::class, 'submitScore']);
+
 
 
 

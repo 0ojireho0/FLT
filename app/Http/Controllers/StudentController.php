@@ -148,4 +148,38 @@ class StudentController extends Controller
             'user' => $user,
         ]);
     }
+
+
+    public function getStudentsAnswers(Request $request){
+            $request -> validate([
+                'answer1' => 'required',
+                'answer2' => 'required',
+                'answer3' => 'required',
+                'answer4' => 'required',
+                'answer5' => 'required',
+                'answer6' => 'required',
+                'student_id' => 'required',
+                'total' => 'required'
+            ]);
+            
+            $existingRecord = Student::where('id', $request->student_id);
+
+            if($existingRecord){
+                $existingRecord->update([
+                    'ls1_english_part1_1' => $request->answer1,
+                    'ls1_english_part1_2' => $request->answer2,
+                    'ls1_english_part1_3' => $request->answer3,
+                    'ls1_english_part1_4' => $request->answer4,
+                    'ls1_english_part1_5' => $request->answer5,
+                    'ls1_english_part2_6' => $request->answer6,
+                    'score_ls1_english' => $request->total
+
+                ]);
+                return response()->json(["Success"=>$existingRecord, 200]);
+            }else{
+                return response()->json("Error");
+            }
+            
+
+    }
 }

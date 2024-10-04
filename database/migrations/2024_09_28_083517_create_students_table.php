@@ -71,6 +71,14 @@ return new class extends Migration
             $table->string('ls6_4')->nullable();
             $table->string('ls6_5')->nullable();
             $table->string('ls6_6')->nullable();
+            $table->string('grade_level')->nullable();
+            $table->integer('score_ls1_english')->nullable();
+            $table->integer('score_ls1_filipino')->nullable();
+            $table->integer('score_ls2_scientific')->nullable();
+            $table->integer('score_ls3_math')->nullable();
+            $table->integer('score_ls4_life')->nullable();
+            $table->integer('score_ls5_uts')->nullable();
+            $table->integer('score_ls6_digital')->nullable();
             
             $table->timestamps();
         });
