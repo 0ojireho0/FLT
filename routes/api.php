@@ -43,6 +43,14 @@ Route::put('/student/{id}', [StudentController::class, 'update']);
 Route::post('/student', [StudentController::class, 'store']);
 Route::delete('/student/{id}', [StudentController::class, 'destroy']);
 Route::post('/getStudentAnswer', [StudentController::class, 'getStudentsAnswers']);
+Route::post('/getStudentAnswerFilipino', [StudentController::class, 'getStudentsAnswersFilipino']);
+Route::post('/getStudentAnswerScientific', [StudentController::class, 'getStudentsAnswersScientific']);
+Route::post('/getStudentAnswerMath', [StudentController::class, 'getStudentsAnswersMath']);
+Route::post('/getStudentAnswerLife', [StudentController::class, 'getStudentsAnswersLife']);
+Route::post('/getStudentAnswerUTS', [StudentController::class, 'getStudentsAnswersUTS']);
+Route::post('/getStudentAnswerDigital', [StudentController::class, 'getStudentsAnswersDigital']);
+Route::get('/getStudents', [StudentController::class, 'getStudents']);
+Route::post('/submitStudentScoreLS1English', [StudentController::class, 'submitStudentScoreLS1English']);
 
 
 Route::post('/student-pis', [StudentPISController::class, 'store']);
@@ -58,6 +66,7 @@ Route::get('/get-specific-students', [TeacherPreTestController::class, 'getSpeci
 Route::get('/teacher-pretest', [TeacherPreTestController::class, 'index']);
 Route::post('/new-student-teacher', [TeacherPreTestController::class, 'store'] );
 Route::post('/submit-score', [TeacherPreTestController::class, 'submitScore']);
+Route::post('/submit-score-ls1english', [TeacherPreTestController::class, 'submitScoreLS1English']);
 
 
 

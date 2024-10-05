@@ -16,6 +16,13 @@ return new class extends Migration
             $table->foreignId('teacher_id')->constrained('teachers')->onDelete('cascade');
             $table->foreignId('students_id')->constrained('students')->onDelete('cascade');
             $table->integer('pis')->nullable();
+            $table->string('submit_finalscore_ls1english')->nullable();
+            $table->string('submit_finalscore_ls1filipino')->nullable();
+            $table->string('submit_finalscore_ls2')->nullable();
+            $table->string('submit_finalscore_ls3')->nullable();
+            $table->string('submit_finalscore_ls4')->nullable();
+            $table->string('submit_finalscore_ls5')->nullable();
+            $table->string('submit_finalscore_ls6')->nullable();
             $table->timestamps();
         });
     }

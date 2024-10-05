@@ -77,6 +77,39 @@ class TeacherPreTestController extends Controller
             return response()->json($submit, 200);
         }
     }
+    
+    public function submitScoreLS1English(Request $request)
+    {
+        // Validate the incoming request
+        $request->validate([
+            'students_id' => 'required',
+            'teacher_id' => 'required',
+            'addScoreNumber6' => 'required'
+        ]);
+    
+        // Check if the record exists
+        $existingRecord = TeacherPreTest::where('students_id', $request->students_id)
+                                        ->where('teacher_id', $request->teacher_id)
+                                        ->first();
+    
+        if ($existingRecord) {
+            $existingRecord->update([
+                'submit_finalscore_ls1english' => $request->addScoreNumber6
+            ]);
+    
+            return response()->json($existingRecord, 200);
+        } else {
+          
+            $submit = TeacherPreTest::create([
+                'students_id' => $request->students_id,
+                'teacher_id' => $request->teacher_id,
+                'submit_finalscore_ls1english' => $request->addScoreNumber6
+            ]);
+    
+            return response()->json($submit, 200);
+        }
+    }
+    
 
 
 

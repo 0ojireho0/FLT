@@ -175,11 +175,215 @@ class StudentController extends Controller
                     'score_ls1_english' => $request->total
 
                 ]);
-                return response()->json(["Success"=>$existingRecord, 200]);
-            }else{
-                return response()->json("Error");
             }
-            
 
+            $students = Student::where('id',$request->student_id )->get();
+            return response()->json(["Success"=>$students, 200]);
+    }
+
+    public function submitStudentScoreLS1English(Request $request){
+        $request -> validate([
+            'student_id' => 'required',
+            'total' => 'required'
+        ]);
+        
+        $existingRecord = Student::where('id', $request->student_id);
+
+        if($existingRecord){
+            $existingRecord->update([
+                'score_ls1_english' => $request->total
+
+            ]);
+        }
+
+        $students = Student::where('id',$request->student_id )->get();
+        return response()->json(["Success"=>$students, 200]);
+}
+
+    public function getStudentsAnswersFilipino(Request $request){
+        $request -> validate([
+            'answer1' => 'required',
+            'answer2' => 'required',
+            'answer3' => 'required',
+            'answer4' => 'required',
+            'student_id' => 'required',
+            'total' => 'required'
+        ]);
+        
+        $existingRecord = Student::where('id', $request->student_id);
+
+        if($existingRecord){
+            $existingRecord->update([
+                'ls1_filipino_part1_1' => $request->answer1,
+                'ls1_filipino_part1_2' => $request->answer2,
+                'ls1_filipino_part1_3' => $request->answer3,
+                'ls1_filipino_part2_4' => $request->answer4,
+                'score_ls1_filipino' => $request->total
+
+            ]);
+        }
+
+        $students = Student::where('id',$request->student_id )->get();
+        return response()->json(["Success"=>$students, 200]);
+}
+
+    public function getStudentsAnswersScientific(Request $request){
+        $request -> validate([
+            'answer1' => 'required',
+            'answer2' => 'required',
+            'answer3' => 'required',
+            'answer4' => 'required',
+            'answer5' => 'required',
+            'student_id' => 'required',
+            'total' => 'required'
+        ]);
+        
+        $existingRecord = Student::where('id', $request->student_id);
+
+        if($existingRecord){
+            $existingRecord->update([
+                'ls2_1' => $request->answer1,
+                'ls2_2' => $request->answer2,
+                'ls2_3' => $request->answer3,
+                'ls2_4' => $request->answer4,
+                'ls2_5' => $request->answer5,
+                'score_ls2_scientific' => $request->total
+
+            ]);
+        }
+
+        $students = Student::where('id',$request->student_id )->get();
+        return response()->json(["Success"=>$students, 200]);
+    }
+    public function getStudentsAnswersMath(Request $request){
+        $request -> validate([
+            'answer1' => 'required',
+            'answer2' => 'required',
+            'answer3' => 'required',
+            'answer4' => 'required',
+            'answer5' => 'required',
+            'answer6' => 'required',
+            'answer7' => 'required',
+            'answer8' => 'required',
+            'student_id' => 'required',
+            'total' => 'required'
+        ]);
+        
+        $existingRecord = Student::where('id', $request->student_id);
+
+        if($existingRecord){
+            $existingRecord->update([
+                'ls3_1' => $request->answer1,
+                'ls3_2' => $request->answer2,
+                'ls3_3' => $request->answer3,
+                'ls3_4' => $request->answer4,
+                'ls3_5' => $request->answer5,
+                'ls3_6' => $request->answer6,
+                'ls3_7' => $request->answer7,
+                'ls3_8' => $request->answer8,
+                'score_ls3_math' => $request->total
+
+            ]);
+        }
+
+        $students = Student::where('id',$request->student_id )->get();
+        return response()->json(["Success"=>$students, 200]);
+    }
+    public function getStudentsAnswersLife(Request $request){
+        $request -> validate([
+            'answer1' => 'required',
+            'answer2' => 'required',
+            'answer3' => 'required',
+            'answer4' => 'required',
+            'answer5' => 'required',
+            'answer6' => 'required',
+            'student_id' => 'required',
+            'total' => 'required'
+        ]);
+        
+        $existingRecord = Student::where('id', $request->student_id);
+
+        if($existingRecord){
+            $existingRecord->update([
+                'ls4_1' => $request->answer1,
+                'ls4_2' => $request->answer2,
+                'ls4_3' => $request->answer3,
+                'ls4_4' => $request->answer4,
+                'ls4_5' => $request->answer5,
+                'ls4_6' => $request->answer6,
+                'score_ls4_life' => $request->total
+
+            ]);
+        }
+
+        $students = Student::where('id',$request->student_id )->get();
+        return response()->json(["Success"=>$students, 200]);
+    }
+    public function getStudentsAnswersUTS(Request $request){
+        $request -> validate([
+            'answer1' => 'required',
+            'answer2' => 'required',
+            'answer3' => 'required',
+            'answer4' => 'required',
+            'answer5' => 'required',
+            'student_id' => 'required',
+            'total' => 'required'
+        ]);
+        
+        $existingRecord = Student::where('id', $request->student_id);
+
+        if($existingRecord){
+            $existingRecord->update([
+                'ls5_1' => $request->answer1,
+                'ls5_2' => $request->answer2,
+                'ls5_3' => $request->answer3,
+                'ls5_4' => $request->answer4,
+                'ls5_5' => $request->answer5,
+                'score_ls5_uts' => $request->total
+
+            ]);
+        }
+
+        $students = Student::where('id',$request->student_id )->get();
+        return response()->json(["Success"=>$students, 200]);
+    }
+    public function getStudentsAnswersDigital(Request $request){
+        $request -> validate([
+            'answer1' => 'required',
+            'answer2' => 'required',
+            'answer3' => 'required',
+            'answer4' => 'required',
+            'answer5' => 'required',
+            'answer6' => 'required',
+            'student_id' => 'required',
+            'total' => 'required'
+        ]);
+        
+        $existingRecord = Student::where('id', $request->student_id);
+
+        if($existingRecord){
+            $existingRecord->update([
+                'ls6_1' => $request->answer1,
+                'ls6_2' => $request->answer2,
+                'ls6_3' => $request->answer3,
+                'ls6_4' => $request->answer4,
+                'ls6_5' => $request->answer5,
+                'ls6_6' => $request->answer5,
+                'score_ls6_digital' => $request->total
+
+            ]);
+        }
+
+        $students = Student::where('id',$request->student_id )->get();
+        return response()->json(["Success"=>$students, 200]);
+    }
+
+    public function getStudents(Request $request)
+    {   
+        $studentsId = $request->query('students_id');
+
+        $students = Student::where('id', $studentsId)->get();
+    
+        return response()->json($students);
     }
 }
