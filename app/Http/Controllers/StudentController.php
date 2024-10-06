@@ -181,24 +181,6 @@ class StudentController extends Controller
             return response()->json(["Success"=>$students, 200]);
     }
 
-    public function submitStudentScoreLS1English(Request $request){
-        $request -> validate([
-            'student_id' => 'required',
-            'total' => 'required'
-        ]);
-        
-        $existingRecord = Student::where('id', $request->student_id);
-
-        if($existingRecord){
-            $existingRecord->update([
-                'score_ls1_english' => $request->total
-
-            ]);
-        }
-
-        $students = Student::where('id',$request->student_id )->get();
-        return response()->json(["Success"=>$students, 200]);
-}
 
     public function getStudentsAnswersFilipino(Request $request){
         $request -> validate([
@@ -386,4 +368,42 @@ class StudentController extends Controller
     
         return response()->json($students);
     }
+
+    public function submitStudentScoreLS1English(Request $request){
+        $request -> validate([
+            'student_id' => 'required',
+            'total' => 'required'
+        ]);
+        
+        $existingRecord = Student::where('id', $request->student_id);
+
+        if($existingRecord){
+            $existingRecord->update([
+                'score_ls1_english' => $request->total
+
+            ]);
+        }
+
+        $students = Student::where('id',$request->student_id )->get();
+        return response()->json(["Success"=>$students, 200]);
+    }
+
+    public function submitStudentScoreLS1Filipino(Request $request){
+        $request -> validate([
+            'student_id' => 'required',
+            'total' => 'required'
+        ]);
+        
+        $existingRecord = Student::where('id', $request->student_id);
+
+        if($existingRecord){
+            $existingRecord->update([
+                'score_ls1_filipino' => $request->total
+
+            ]);
+        }
+
+        $students = Student::where('id',$request->student_id )->get();
+        return response()->json(["Success"=>$students, 200]);
+}
 }

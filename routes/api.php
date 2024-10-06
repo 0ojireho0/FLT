@@ -51,6 +51,7 @@ Route::post('/getStudentAnswerUTS', [StudentController::class, 'getStudentsAnswe
 Route::post('/getStudentAnswerDigital', [StudentController::class, 'getStudentsAnswersDigital']);
 Route::get('/getStudents', [StudentController::class, 'getStudents']);
 Route::post('/submitStudentScoreLS1English', [StudentController::class, 'submitStudentScoreLS1English']);
+Route::post('/submitStudentScoreLS1Filipino', [StudentController::class, 'submitStudentScoreLS1Filipino']);
 
 
 Route::post('/student-pis', [StudentPISController::class, 'store']);
@@ -67,7 +68,7 @@ Route::get('/teacher-pretest', [TeacherPreTestController::class, 'index']);
 Route::post('/new-student-teacher', [TeacherPreTestController::class, 'store'] );
 Route::post('/submit-score', [TeacherPreTestController::class, 'submitScore']);
 Route::post('/submit-score-ls1english', [TeacherPreTestController::class, 'submitScoreLS1English']);
-
+Route::post('/submit-score-ls1filipino', [TeacherPreTestController::class, 'submitScoreLS1Filipino']);
 
 
 
