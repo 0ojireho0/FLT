@@ -36,11 +36,14 @@ return new class extends Migration
             $table->string('ls1_english_part2_6')->nullable();
             $table->string('ls1_english_part3_7')->nullable();
             $table->string('ls1_english_part3_8')->nullable();
+            $table->string('audio_ls1_english_part3_7')->nullable();
+            $table->string('audio_ls1_english_part3_8')->nullable();
             $table->string('ls1_filipino_part1_1')->nullable();
             $table->string('ls1_filipino_part1_2')->nullable();
             $table->string('ls1_filipino_part1_3')->nullable();
             $table->string('ls1_filipino_part2_4')->nullable();
             $table->string('ls1_filipino_part3_5')->nullable();
+            $table->string('audio_ls1_filipino_part3_5')->nullable();
             $table->string('ls2_1')->nullable();
             $table->string('ls2_2')->nullable();
             $table->string('ls2_3')->nullable();
@@ -71,7 +74,6 @@ return new class extends Migration
             $table->string('ls6_4')->nullable();
             $table->string('ls6_5')->nullable();
             $table->string('ls6_6')->nullable();
-            $table->string('grade_level')->nullable();
             $table->integer('score_ls1_english')->nullable();
             $table->integer('score_ls1_filipino')->nullable();
             $table->integer('score_ls2_scientific')->nullable();
@@ -79,7 +81,6 @@ return new class extends Migration
             $table->integer('score_ls4_life')->nullable();
             $table->integer('score_ls5_uts')->nullable();
             $table->integer('score_ls6_digital')->nullable();
-            
             $table->timestamps();
         });
     }

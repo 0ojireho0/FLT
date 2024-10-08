@@ -54,6 +54,8 @@ Route::post('/submitStudentScoreLS1English', [StudentController::class, 'submitS
 Route::post('/submitStudentScoreLS1Filipino', [StudentController::class, 'submitStudentScoreLS1Filipino']);
 
 
+
+
 Route::post('/student-pis', [StudentPISController::class, 'store']);
 Route::get('/student-pis', [StudentPISController::class, 'index']);
 

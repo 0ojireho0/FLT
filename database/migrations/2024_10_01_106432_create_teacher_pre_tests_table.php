@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('submit_finalscore_ls4')->nullable();
             $table->string('submit_finalscore_ls5')->nullable();
             $table->string('submit_finalscore_ls6')->nullable();
+            $table->string('submit_finalscore_ls1english_part7')->nullable();
             $table->timestamps();
         });
     }

@@ -34,11 +34,14 @@ class Student extends Model
         'ls1_english_part2_6',
         'ls1_english_part3_7',
         'ls1_english_part3_8',
+        'audio_ls1_english_part3_7',
+        'audio_ls1_english_part3_8',
         'ls1_filipino_part1_1',
         'ls1_filipino_part1_2',
         'ls1_filipino_part1_3',
         'ls1_filipino_part2_4',
         'ls1_filipino_part3_5',
+        'audio_ls1_filipino_part3_5',
         'ls2_1',
         'ls2_2',
         'ls2_3',
@@ -69,6 +72,7 @@ class Student extends Model
         'ls6_4',
         'ls6_5',
         'ls6_6',
+        'score_ls1_english'
     ];
 
     protected $hidden = [

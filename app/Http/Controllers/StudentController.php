@@ -150,35 +150,56 @@ class StudentController extends Controller
     }
 
 
-    public function getStudentsAnswers(Request $request){
-            $request -> validate([
-                'answer1' => 'required',
-                'answer2' => 'required',
-                'answer3' => 'required',
-                'answer4' => 'required',
-                'answer5' => 'required',
-                'answer6' => 'required',
-                'student_id' => 'required',
-                'total' => 'required'
-            ]);
-            
-            $existingRecord = Student::where('id', $request->student_id);
+    public function getStudentsAnswers(Request $request)
+    {
+       // Validate the request
+       $request->validate([
+        'answer1' => 'required|string',
+        'answer2' => 'required|string',
+        'answer3' => 'required|string',
+        'answer4' => 'required|string',
+        'answer5' => 'required|string',
+        'answer6' => 'required|string',
+        'answer7' => 'required|string',
+        'student_id' => 'required|integer',
+        'total' => 'required|integer',
+        'audio' => 'nullable|file', // Adjust as needed
+    ]);
+    
+    // Handle the audio file upload
+    $audioURL = null;
+    if ($request->hasFile('audio')) {
+        $audioPath = $request->file('audio')->store('uploads/audios', 'public'); // Store in storage/app/public/uploads/audios
+        $audioURL = asset('storage/' . $audioPath); // Generate URL for the stored audio file
+    }
+    
+    // Check if the student record exists
+    $existingRecord = Student::find($request->student_id);
 
-            if($existingRecord){
-                $existingRecord->update([
-                    'ls1_english_part1_1' => $request->answer1,
-                    'ls1_english_part1_2' => $request->answer2,
-                    'ls1_english_part1_3' => $request->answer3,
-                    'ls1_english_part1_4' => $request->answer4,
-                    'ls1_english_part1_5' => $request->answer5,
-                    'ls1_english_part2_6' => $request->answer6,
-                    'score_ls1_english' => $request->total
+    if ($existingRecord) {
+        // Update the existing record with the answers and audio URL
+        $existingRecord->update([
+            'ls1_english_part1_1' => $request->answer1,
+            'ls1_english_part1_2' => $request->answer2,
+            'ls1_english_part1_3' => $request->answer3,
+            'ls1_english_part1_4' => $request->answer4,
+            'ls1_english_part1_5' => $request->answer5,
+            'ls1_english_part2_6' => $request->answer6,
+            'ls1_english_part3_7' => $request->answer7,
+            'score_ls1_english' => $request->total,
+            'audio_ls1_english_part3_7' => $audioURL // Save the audio URL if needed
+        ]);
+    }
 
-                ]);
-            }
-
-            $students = Student::where('id',$request->student_id )->get();
-            return response()->json(["Success"=>$students, 200]);
+    // Retrieve the updated student record
+    $students = Student::where('id', $request->student_id)->get();
+    
+    // Send response back to client
+    return response()->json([
+        'message' => 'Answers submitted successfully!',
+        'audioURL' => $audioURL, // Include the audio URL in the response
+        'students' => $students,
+    ], 200);
     }
 
 
