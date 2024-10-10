@@ -22,5 +22,7 @@ class TeacherPreTest extends Model
         'created_at',
         'updated_at',
         'submit_finalscore_ls1english_part7',
+        'submit_finalscore_ls1english_part8',
+        'submit_finalscore_ls1filipino_part5'
     ];
 }

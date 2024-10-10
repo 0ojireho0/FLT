@@ -85,7 +85,8 @@ class TeacherPreTestController extends Controller
             'students_id' => 'required',
             'teacher_id' => 'required',
             'addScoreNumber6' => 'required',
-            'addScoreNumber7' => 'required'
+            'addScoreNumber7' => 'required',
+            'addScoreNumber8' => 'required'
         ]);
     
         // Check if the record exists
@@ -96,7 +97,8 @@ class TeacherPreTestController extends Controller
         if ($existingRecord) {
             $existingRecord->update([
                 'submit_finalscore_ls1english' => $request->addScoreNumber6,
-                'submit_finalscore_ls1english_part7' => $request->addScoreNumber7
+                'submit_finalscore_ls1english_part7' => $request->addScoreNumber7,
+                'submit_finalscore_ls1english_part8' => $request->addScoreNumber8
             ]);
     
             return response()->json($existingRecord, 200);
@@ -106,7 +108,8 @@ class TeacherPreTestController extends Controller
                 'students_id' => $request->students_id,
                 'teacher_id' => $request->teacher_id,
                 'submit_finalscore_ls1english' => $request->addScoreNumber6,
-                'submit_finalscore_ls1english_part7' => $request->addScoreNumber7
+                'submit_finalscore_ls1english_part7' => $request->addScoreNumber7,
+                'submit_finalscore_ls1english_part8' => $request->addScoreNumber8
             ]);
     
             return response()->json($submit, 200);
@@ -119,7 +122,8 @@ class TeacherPreTestController extends Controller
         $request->validate([
             'students_id' => 'required',
             'teacher_id' => 'required',
-            'addScoreNumber4' => 'required'
+            'addScoreNumber4' => 'required',
+            'addScoreNumber5' => 'required'
         ]);
     
         // Check if the record exists
@@ -129,7 +133,8 @@ class TeacherPreTestController extends Controller
     
         if ($existingRecord) {
             $existingRecord->update([
-                'submit_finalscore_ls1filipino' => $request->addScoreNumber4
+                'submit_finalscore_ls1filipino' => $request->addScoreNumber4,
+                'submit_finalscore_ls1filipino_part5' => $request->addScoreNumber5
             ]);
     
             return response()->json($existingRecord, 200);
@@ -138,7 +143,8 @@ class TeacherPreTestController extends Controller
             $submit = TeacherPreTest::create([
                 'students_id' => $request->students_id,
                 'teacher_id' => $request->teacher_id,
-                'submit_finalscore_ls1filipino' => $request->addScoreNumber4
+                'submit_finalscore_ls1filipino' => $request->addScoreNumber4,
+                'submit_finalscore_ls1filipino_part5' => $request->addScoreNumber5
             ]);
     
             return response()->json($submit, 200);

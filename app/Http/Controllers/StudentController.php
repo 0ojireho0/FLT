@@ -161,9 +161,11 @@ class StudentController extends Controller
         'answer5' => 'required|string',
         'answer6' => 'required|string',
         'answer7' => 'required|string',
+        'answer8' => 'required|string',
         'student_id' => 'required|integer',
         'total' => 'required|integer',
         'audio' => 'nullable|file', // Adjust as needed
+        'audio2' => 'nullable|file'
     ]);
     
     // Handle the audio file upload
@@ -171,6 +173,12 @@ class StudentController extends Controller
     if ($request->hasFile('audio')) {
         $audioPath = $request->file('audio')->store('uploads/audios', 'public'); // Store in storage/app/public/uploads/audios
         $audioURL = asset('storage/' . $audioPath); // Generate URL for the stored audio file
+    }
+
+    $audioURL2 = null;
+    if ($request->hasFile('audio2')) {
+        $audioPath2 = $request->file('audio2')->store('uploads/audios', 'public'); // Store in storage/app/public/uploads/audios
+        $audioURL2 = asset('storage/' . $audioPath2); // Generate URL for the stored audio file
     }
     
     // Check if the student record exists
@@ -186,8 +194,10 @@ class StudentController extends Controller
             'ls1_english_part1_5' => $request->answer5,
             'ls1_english_part2_6' => $request->answer6,
             'ls1_english_part3_7' => $request->answer7,
+            'ls1_english_part3_8' => $request->answer8,
             'score_ls1_english' => $request->total,
-            'audio_ls1_english_part3_7' => $audioURL // Save the audio URL if needed
+            'audio_ls1_english_part3_7' => $audioURL, // Save the audio URL if needed
+            'audio_ls1_english_part3_8' => $audioURL2 // Save the audio URL if needed
         ]);
     }
 
@@ -198,6 +208,7 @@ class StudentController extends Controller
     return response()->json([
         'message' => 'Answers submitted successfully!',
         'audioURL' => $audioURL, // Include the audio URL in the response
+        'audioURL2' => $audioURL2,
         'students' => $students,
     ], 200);
     }
@@ -209,9 +220,17 @@ class StudentController extends Controller
             'answer2' => 'required',
             'answer3' => 'required',
             'answer4' => 'required',
+            'answer5' => 'required',
             'student_id' => 'required',
-            'total' => 'required'
+            'total' => 'required',
+            'audio' => 'nullable|file'
         ]);
+
+        $audioURL = null;
+        if ($request->hasFile('audio')) {
+            $audioPath = $request->file('audio')->store('uploads/audios', 'public'); // Store in storage/app/public/uploads/audios
+            $audioURL = asset('storage/' . $audioPath); // Generate URL for the stored audio file
+        }
         
         $existingRecord = Student::where('id', $request->student_id);
 
@@ -221,7 +240,9 @@ class StudentController extends Controller
                 'ls1_filipino_part1_2' => $request->answer2,
                 'ls1_filipino_part1_3' => $request->answer3,
                 'ls1_filipino_part2_4' => $request->answer4,
-                'score_ls1_filipino' => $request->total
+                'ls1_filipino_part3_5' => $request->answer5,
+                'score_ls1_filipino' => $request->total,
+                'audio_ls1_filipino_part3_5' => $audioURL
 
             ]);
         }
