@@ -72,7 +72,14 @@ class Student extends Model
         'ls6_4',
         'ls6_5',
         'ls6_6',
-        'score_ls1_english'
+        'score_ls1_english',
+        'score_ls1_filipino',
+        'score_ls2_scientific',
+        'score_ls3_math',
+        'score_ls4_life',
+        'score_ls5_uts',
+        'score_ls6_digital'
+
     ];
 
     protected $hidden = [

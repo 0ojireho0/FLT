@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('teacher_id')->constrained('teachers')->onDelete('cascade');
             $table->foreignId('students_id')->constrained('students')->onDelete('cascade');
+            // $table->foreignId('students_post_id')->constrained('student_post_test')->onDelete('cascade');
             $table->integer('pis')->nullable();
             $table->string('submit_finalscore_ls1english')->nullable();
             $table->string('submit_finalscore_ls1filipino')->nullable();

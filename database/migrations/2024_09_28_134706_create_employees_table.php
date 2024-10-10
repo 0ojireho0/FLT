@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('fullname');
             $table->set('gender', ['Male', 'Female']);
             $table->string('contact_number');
-            $table->timestamp('birthday', precision: 0);
+            $table->date('birthday');
             $table->string('house_number');
             $table->string('barangay');
             $table->string('city');

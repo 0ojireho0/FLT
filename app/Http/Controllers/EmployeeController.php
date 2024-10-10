@@ -40,6 +40,7 @@ class EmployeeController extends Controller
             'email' => 'required|email|unique:students', // Ensure email is unique
             'password' => 'required|string|min:8', // Minimum password length
             'gender' => 'required',
+            'birthday' => 'required|date_format:Y-m-d', 
         ]);
     
         // Create a new student

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
-
+use Carbon\Carbon;
 
 
 class TeacherController extends Controller
@@ -17,7 +17,7 @@ class TeacherController extends Controller
             'fullname' => 'required|string|max:255',
             'email' => 'required|email|unique:students', // Ensure email is unique
             'password' => 'required|string|min:8', // Minimum password length
-            'gender' => 'required',
+            'birthday' => 'required|date_format:Y-m-d', 
         ]);
     
         // Create a new student
