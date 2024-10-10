@@ -42,6 +42,7 @@ class TeacherPreTestController extends Controller
         $studentTeacher = TeacherPreTest::create([
             'students_id' => $request->students_id,
             'teacher_id' => $request->teacher_id,
+            // 'studentsposttest_id' => $request->students_id
         ]);
 
         return response()->json($studentTeacher, 200);

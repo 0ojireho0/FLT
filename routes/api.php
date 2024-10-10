@@ -21,6 +21,8 @@ use App\Http\Controllers\LS4LifeController;
 use App\Http\Controllers\LS5UtsController;
 use App\Http\Controllers\LS6DigitalController;
 use App\Http\Controllers\StudentPISController;
+use App\Http\Controllers\StudentsposttestController;
+use App\Http\Controllers\TeacherPostTestController;
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
@@ -36,6 +38,18 @@ Route::delete('/employee/{id}', [EmployeeController::class, 'destroy']);
 
 Route::post('login-admin', [AdminController::class, 'login']);
 
+
+Route::post('/students-posttest', [StudentsposttestController::class, 'store']);
+Route::get('/getStudentPosttest', [StudentsposttestController::class, 'getStudents']);
+Route::post('/getStudentAnswerPosttest', [StudentsposttestController::class, 'getStudentsAnswers']);
+Route::post('/getStudentAnswerFilipinoPosttest', [StudentsposttestController::class, 'getStudentsAnswersFilipino']);
+Route::post('/getStudentAnswerScientificPosttest', [StudentsposttestController::class, 'getStudentsAnswersScientific']);
+Route::post('/getStudentAnswerMathPosttest', [StudentsposttestController::class, 'getStudentsAnswersMath']);
+Route::post('/getStudentAnswerLifePosttest', [StudentsposttestController::class, 'getStudentsAnswersLife']);
+Route::post('/getStudentAnswerUTSPosttest', [StudentsposttestController::class, 'getStudentsAnswersUTS']);
+Route::post('/getStudentAnswerDigitalPosttest', [StudentsposttestController::class, 'getStudentsAnswersDigital']);
+Route::post('/submitStudentScoreLS1EnglishPosttest', [StudentsposttestController::class, 'submitStudentScoreLS1English']);
+Route::post('/submitStudentScoreLS1FilipinoPosttest', [StudentsposttestController::class, 'submitStudentScoreLS1Filipino']);
 
 Route::post('/login', [StudentController::class, 'login']);
 Route::get('/student', [StudentController::class, 'index']);
@@ -64,6 +78,12 @@ Route::get('/student-pis', [StudentPISController::class, 'index']);
 Route::post('/teacher', [TeacherController::class, 'store']);
 Route::get('/teacher', [TeacherController::class, 'index']);
 Route::post('/teacher-login', [TeacherController::class, 'login']);
+
+Route::post('/new-student-teacher-posttest', [TeacherPostTestController::class, 'store'] );
+Route::get('/get-specific-students-posttest', [TeacherPostTestController::class, 'getSpecificStudents']);
+Route::post('/submit-score-ls1english-posttest', [TeacherPostTestController::class, 'submitScoreLS1English']);
+Route::post('/submit-score-ls1filipino-posttest', [TeacherPostTestController::class, 'submitScoreLS1Filipino']);
+
 
 Route::get('/get-specific-students', [TeacherPreTestController::class, 'getSpecificStudents']);
 Route::get('/teacher-pretest', [TeacherPreTestController::class, 'index']);
