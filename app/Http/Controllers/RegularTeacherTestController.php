@@ -32,6 +32,25 @@ class RegularTeacherTestController extends Controller
         return response()->json(['details'=> $results]);
     }
 
+    public function getTeachernames(Request $request) {
+        $regular_teacher_id = $request->query('regular_teacher_id');
+
+        $results = DB::table('regular_teacher_tests as rtt')
+        ->join('regular_students as rs', 'rtt.regular_student_id', '=', 'rs.id')
+        ->join('regular_teachers as rt', 'rtt.regular_teacher_id', '=', 'rt.id')
+        ->select(
+            'rt.id as regular_teacher_id',
+            'rs.id as regular_student_id',
+            'rs.*',
+            'rtt.*',
+            'rt.id'
+        )
+        ->where('rtt.regular_teacher_id', $regular_teacher_id)  // Add condition for regular_teacher_id
+        ->get();
+        return $results;
+    }
+
+
     public function store(Request $request){
 
      
@@ -91,6 +110,56 @@ class RegularTeacherTestController extends Controller
                 'filipino_2' => $request->answer2,
                 'filipino_3' => $request->answer3,
                 'score_filipino' => $request->total
+
+            ]);
+        }
+
+        $students = RegularTeacherTest::where('id',$request->student_id )->get();
+        return response()->json(["Success"=>$students, 200]);
+    }
+
+    public function getStudentsAnswersScience(Request $request) {
+        $request -> validate([
+            'answer1' => 'required',
+            'answer2' => 'required',
+            'answer3' => 'required',
+            'student_id' => 'required',
+            'total' => 'required'
+        ]);
+        
+        $existingRecord = RegularTeacherTest::where('id', $request->student_id);
+
+        if($existingRecord){
+            $existingRecord->update([
+                'science_1' => $request->answer1,
+                'science_2' => $request->answer2,
+                'science_3' => $request->answer3,
+                'score_science' => $request->total
+
+            ]);
+        }
+
+        $students = RegularTeacherTest::where('id',$request->student_id )->get();
+        return response()->json(["Success"=>$students, 200]);
+    }
+
+    public function getStudentsAnswersMath(Request $request) {
+        $request -> validate([
+            'answer1' => 'required',
+            'answer2' => 'required',
+            'answer3' => 'required',
+            'student_id' => 'required',
+            'total' => 'required'
+        ]);
+        
+        $existingRecord = RegularTeacherTest::where('id', $request->student_id);
+
+        if($existingRecord){
+            $existingRecord->update([
+                'math_1' => $request->answer1,
+                'math_2' => $request->answer2,
+                'math_3' => $request->answer3,
+                'score_math' => $request->total
 
             ]);
         }

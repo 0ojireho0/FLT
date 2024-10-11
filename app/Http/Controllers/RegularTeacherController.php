@@ -54,4 +54,28 @@ class RegularTeacherController extends Controller
     
         return response()->json(['message' => 'Employee deleted successfully'], 200);
     }
+
+    public function login(Request $request)
+    {
+        // Validate the incoming request
+        $data = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+    
+        // Retrieve the user by email
+        $user = RegularTeacher::where('email', $data['email'])->first();
+    
+        // Check if the user exists and if the password matches
+        if (!$user || $data['password'] !== $user->password) {
+            return response()->json([
+                'message' => 'Email or password is incorrect!'
+            ], 401);
+        }
+
+        return response()->json([
+            'message' => 'Login successful',
+            'user' => $user,
+        ]);
+    }
 }

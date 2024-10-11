@@ -170,12 +170,18 @@ Route::delete('/ls6digital/{id}', [LS6DigitalController::class, 'destroy']);
 Route::post('/create-regular-teacher', [RegularTeacherController::class, 'store']);
 Route::get('/regular-teacher', [RegularTeacherController::class, 'index']);
 Route::delete('/regular-teacher/{id}', [RegularTeacherController::class, 'destroy']);
+Route::post('/regular-teacher-login', [RegularTeacherController::class, 'login']);
 
 Route::post('/login-regular-student', [RegularStudentController::class, 'login']);
 Route::post('/create-regular-student', [RegularStudentController::class, 'store']);
 Route::get('/regular-student', [RegularStudentController::class, 'index']); 
 
 Route::get('/get-teacher-teachername', [RegularTeacherTestController::class, 'getTeachername']);
+Route::get('/get-teacher-teachernames', [RegularTeacherTestController::class, 'getTeachernames']);
 Route::post('/new-regularstudent-teacher', [RegularTeacherTestController::class, 'store'] );
 Route::post('/getRegularStudetAnswerEnglish', [RegularTeacherTestController::class, 'getStudentsAnswersEnglish']);
 Route::post('/getStudentsAnswersFilipino', [RegularTeacherTestController::class, 'getStudentsAnswersFilipino']);
+Route::post('/getStudentsAnswersScience', [RegularTeacherTestController::class, 'getStudentsAnswersScience']);
+Route::post('/getStudentsAnswersMath', [RegularTeacherTestController::class, 'getStudentsAnswersMath']);
+
+
