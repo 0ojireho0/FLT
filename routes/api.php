@@ -23,6 +23,9 @@ use App\Http\Controllers\LS6DigitalController;
 use App\Http\Controllers\StudentPISController;
 use App\Http\Controllers\StudentsposttestController;
 use App\Http\Controllers\TeacherPostTestController;
+use App\Http\Controllers\RegularStudentController;
+use App\Http\Controllers\RegularTeacherController;
+use App\Http\Controllers\RegularTeacherTestController;
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
@@ -78,6 +81,7 @@ Route::get('/student-pis', [StudentPISController::class, 'index']);
 Route::post('/teacher', [TeacherController::class, 'store']);
 Route::get('/teacher', [TeacherController::class, 'index']);
 Route::post('/teacher-login', [TeacherController::class, 'login']);
+Route::delete('/teacher/{id}', [TeacherController::class, 'destroy']);
 
 Route::post('/new-student-teacher-posttest', [TeacherPostTestController::class, 'store'] );
 Route::get('/get-specific-students-posttest', [TeacherPostTestController::class, 'getSpecificStudents']);
@@ -162,3 +166,16 @@ Route::get('/ls6digital/{id}', [LS6DigitalController::class, 'show']);
 Route::get('/ls6digital', [LS6DigitalController::class, 'index']);
 Route::delete('/ls6digital/{id}', [LS6DigitalController::class, 'destroy']);
 
+
+Route::post('/create-regular-teacher', [RegularTeacherController::class, 'store']);
+Route::get('/regular-teacher', [RegularTeacherController::class, 'index']);
+Route::delete('/regular-teacher/{id}', [RegularTeacherController::class, 'destroy']);
+
+Route::post('/login-regular-student', [RegularStudentController::class, 'login']);
+Route::post('/create-regular-student', [RegularStudentController::class, 'store']);
+Route::get('/regular-student', [RegularStudentController::class, 'index']); 
+
+Route::get('/get-teacher-teachername', [RegularTeacherTestController::class, 'getTeachername']);
+Route::post('/new-regularstudent-teacher', [RegularTeacherTestController::class, 'store'] );
+Route::post('/getRegularStudetAnswerEnglish', [RegularTeacherTestController::class, 'getStudentsAnswersEnglish']);
+Route::post('/getStudentsAnswersFilipino', [RegularTeacherTestController::class, 'getStudentsAnswersFilipino']);

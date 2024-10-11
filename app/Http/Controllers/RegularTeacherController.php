@@ -4,27 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Teacher;
-use Carbon\Carbon;
 
+use App\Models\RegularTeacher;
 
-class TeacherController extends Controller
+class RegularTeacherController extends Controller
 {
-    public function store(Request $request)
-    {
-        //
+    //
+
+    public function store(Request $request){
         $request->validate([
             'fullname' => 'required|string|max:255',
             'email' => 'required|email|unique:students', // Ensure email is unique
             'password' => 'required|string|min:8', // Minimum password length
             'birthday' => 'required|date_format:Y-m-d', 
         ]);
-    
-        // Create a new student
-        $teacher = new Teacher();
+
+        $teacher = new RegularTeacher();
         $teacher->fullname = $request->input('fullname');
         $teacher->email = $request->input('email');
-        $teacher->password = $request->input('password'); // Store plain password
+        $teacher->password = $request->input('password'); 
         $teacher->active_status = "Active";
         $teacher->gender = $request->input('gender');
         $teacher->birthday = $request->input('birthday');
@@ -33,39 +31,13 @@ class TeacherController extends Controller
         $teacher->city = $request->input('city');
         $teacher->province = $request->input('province');
         $teacher->contact_number = $request->input('contact_number');
-        $teacher->user_type = $request->input('user_type');
         $teacher->save();
 
-
-        return response()->json(['message' => 'Teacher created successfully', 'employee' => $teacher], 201);
-    }
-
-    public function login(Request $request)
-    {
-        // Validate the incoming request
-        $data = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-    
-        // Retrieve the user by email
-        $user = Teacher::where('email', $data['email'])->first();
-    
-        // Check if the user exists and if the password matches
-        if (!$user || $data['password'] !== $user->password) {
-            return response()->json([
-                'message' => 'Email or password is incorrect!'
-            ], 401);
-        }
-
-        return response()->json([
-            'message' => 'Login successful',
-            'user' => $user,
-        ]);
+        return response()->json(['message' => 'Teacher created successfully']);
     }
 
     public function index(){
-        $teachers = Teacher::all();
+        $teachers = RegularTeacher::all();
 
         return response()->json(['teachers'=>$teachers]);
     }
@@ -73,7 +45,7 @@ class TeacherController extends Controller
     public function destroy(string $id)
     {
         //
-        $employee = Teacher::findOrFail($id);
+        $employee = RegularTeacher::findOrFail($id);
         // $student_cred = UserCredentials::findOrFail($id);
 
         // Delete the student
