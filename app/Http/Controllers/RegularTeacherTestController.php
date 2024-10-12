@@ -33,7 +33,9 @@ class RegularTeacherTestController extends Controller
     }
 
     public function getTeachernames(Request $request) {
-        $regular_teacher_id = $request->query('regular_teacher_id');
+
+
+        $regular_teacher_id = $request->query('teacherId');
 
         $results = DB::table('regular_teacher_tests as rtt')
         ->join('regular_students as rs', 'rtt.regular_student_id', '=', 'rs.id')
@@ -45,7 +47,7 @@ class RegularTeacherTestController extends Controller
             'rtt.*',
             'rt.id'
         )
-        ->where('rtt.regular_teacher_id', $regular_teacher_id)  // Add condition for regular_teacher_id
+        ->where('rtt.regular_teacher_id', $regular_teacher_id) 
         ->get();
         return $results;
     }
@@ -77,7 +79,7 @@ class RegularTeacherTestController extends Controller
             'total' => 'required'
         ]);
         
-        $existingRecord = RegularTeacherTest::where('id', $request->student_id);
+        $existingRecord = RegularTeacherTest::where('regular_student_id', $request->student_id);
 
         if($existingRecord){
             $existingRecord->update([
@@ -89,7 +91,7 @@ class RegularTeacherTestController extends Controller
             ]);
         }
 
-        $students = RegularTeacherTest::where('id',$request->student_id )->get();
+        $students = RegularTeacherTest::where('regular_student_id',$request->student_id )->get();
         return response()->json(["Success"=>$students, 200]);
     }
 
@@ -102,7 +104,7 @@ class RegularTeacherTestController extends Controller
             'total' => 'required'
         ]);
         
-        $existingRecord = RegularTeacherTest::where('id', $request->student_id);
+        $existingRecord = RegularTeacherTest::where('regular_student_id', $request->student_id);
 
         if($existingRecord){
             $existingRecord->update([
@@ -114,7 +116,7 @@ class RegularTeacherTestController extends Controller
             ]);
         }
 
-        $students = RegularTeacherTest::where('id',$request->student_id )->get();
+        $students = RegularTeacherTest::where('regular_student_id',$request->student_id )->get();
         return response()->json(["Success"=>$students, 200]);
     }
 
@@ -127,7 +129,7 @@ class RegularTeacherTestController extends Controller
             'total' => 'required'
         ]);
         
-        $existingRecord = RegularTeacherTest::where('id', $request->student_id);
+        $existingRecord = RegularTeacherTest::where('regular_student_id', $request->student_id);
 
         if($existingRecord){
             $existingRecord->update([
@@ -139,7 +141,7 @@ class RegularTeacherTestController extends Controller
             ]);
         }
 
-        $students = RegularTeacherTest::where('id',$request->student_id )->get();
+        $students = RegularTeacherTest::where('regular_student_id',$request->student_id )->get();
         return response()->json(["Success"=>$students, 200]);
     }
 
@@ -152,7 +154,7 @@ class RegularTeacherTestController extends Controller
             'total' => 'required'
         ]);
         
-        $existingRecord = RegularTeacherTest::where('id', $request->student_id);
+        $existingRecord = RegularTeacherTest::where('regular_student_id', $request->student_id);
 
         if($existingRecord){
             $existingRecord->update([
@@ -164,7 +166,7 @@ class RegularTeacherTestController extends Controller
             ]);
         }
 
-        $students = RegularTeacherTest::where('id',$request->student_id )->get();
+        $students = RegularTeacherTest::where('regular_student_id',$request->student_id )->get();
         return response()->json(["Success"=>$students, 200]);
     }
 }
