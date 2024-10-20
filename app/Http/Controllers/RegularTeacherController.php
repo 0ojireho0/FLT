@@ -31,6 +31,7 @@ class RegularTeacherController extends Controller
         $teacher->city = $request->input('city');
         $teacher->province = $request->input('province');
         $teacher->contact_number = $request->input('contact_number');
+        $teacher->position = $request->input('position');
         $teacher->save();
 
         return response()->json(['message' => 'Teacher created successfully']);

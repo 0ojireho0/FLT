@@ -20,6 +20,7 @@ class RegularTeacher extends Model
         'barangay',
         'city',
         'province',
+        'position'
 
 
     ];

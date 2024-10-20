@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->set('active_status', ['Active', 'Inactive']);
+            $table->set('position', ['Teacher I', 'Teacher II', 'Teacher III', 'Master Teacher I', 'Master Teacher II', 'Master Teacher III', 'Master Teacher IV']);
             $table->string('fullname');
             $table->set('gender', ['Male', 'Female']);
             $table->string('contact_number');
