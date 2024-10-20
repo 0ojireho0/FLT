@@ -21,6 +21,7 @@ class RegularStudent extends Model
         'province',
         'religion',
         'grade',
+        'section'
     ];
 
     protected $hidden = [

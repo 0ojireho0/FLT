@@ -34,6 +34,7 @@ class RegularStudentController extends Controller
         $student->religion = $request->input('religion');
         $student->grade = $request->input('grade');
         $student->regular_teacher_id = $request->input('teacher');
+        $student->section = $request->input('section');
         $student->save();
 
 

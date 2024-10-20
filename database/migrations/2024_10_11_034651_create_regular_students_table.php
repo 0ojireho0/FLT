@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('province');
             $table->string('religion');
             $table->integer('grade');
+            $table->set('section', ['1', '2', '3']);
             $table->timestamps();
         });
     }

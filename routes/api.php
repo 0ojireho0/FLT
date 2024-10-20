@@ -26,6 +26,11 @@ use App\Http\Controllers\TeacherPostTestController;
 use App\Http\Controllers\RegularStudentController;
 use App\Http\Controllers\RegularTeacherController;
 use App\Http\Controllers\RegularTeacherTestController;
+use App\Http\Controllers\RegularEnglishModuleController;
+use App\Http\Controllers\RegularFilipinoModuleController;
+use App\Http\Controllers\RegularScienceModuleController;
+use App\Http\Controllers\RegularMathModuleController;
+
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
@@ -185,3 +190,22 @@ Route::post('/getStudentsAnswersScience', [RegularTeacherTestController::class, 
 Route::post('/getStudentsAnswersMath', [RegularTeacherTestController::class, 'getStudentsAnswersMath']);
 
 
+Route::post('/english-module/upload', [RegularEnglishModuleController::class, 'upload']);
+Route::get('/english-module/{id}', [RegularEnglishModuleController::class, 'show']);
+Route::get('/english-module', [RegularEnglishModuleController::class, 'index']);
+Route::delete('/english-module/{id}', [RegularEnglishModuleController::class, 'destroy']);
+
+Route::post('/filipino-module/upload', [RegularFilipinoModuleController::class, 'upload']);
+Route::get('/filipino-module/{id}', [RegularFilipinoModuleController::class, 'show']);
+Route::get('/filipino-module', [RegularFilipinoModuleController::class, 'index']);
+Route::delete('/filipino-module/{id}', [RegularFilipinoModuleController::class, 'destroy']);
+
+Route::post('/science-module/upload', [RegularScienceModuleController::class, 'upload']);
+Route::get('/science-module/{id}', [RegularScienceModuleController::class, 'show']);
+Route::get('/science-module', [RegularScienceModuleController::class, 'index']);
+Route::delete('/science-module/{id}', [RegularScienceModuleController::class, 'destroy']);
+
+Route::post('/math-module/upload', [RegularMathModuleController::class, 'upload']);
+Route::get('/math-module/{id}', [RegularMathModuleController::class, 'show']);
+Route::get('/math-module', [RegularMathModuleController::class, 'index']);
+Route::delete('/math-module/{id}', [RegularMathModuleController::class, 'destroy']);
